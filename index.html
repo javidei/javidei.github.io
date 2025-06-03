@@ -135,6 +135,13 @@
   
             contenedor.appendChild(img);
             contenedor.appendChild(titulo);
+
+            // Añadir evento click para abrir YouTube con búsqueda del título del libro
+            contenedor.addEventListener('click', () => {
+              const youtubeSearchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(libro.title + ' book review')}`;
+              window.open(youtubeSearchUrl, '_blank');
+            });
+            
             galeria.appendChild(contenedor);
           });
         })
