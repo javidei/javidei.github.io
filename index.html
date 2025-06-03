@@ -83,8 +83,29 @@
     <img src="https://images.pexels.com/photos/158607/cairn-fog-mystical-background-158607.jpeg?auto=compress&cs=tinysrgb&h=600" alt="Montañas">
   </section>
 
+  <section class="galeria" id="galeria"></section>
+
   <footer>
     © 2025 - Javier Díaz
   </footer>
+
+  <script>
+  fetch('peliculas.json')
+    .then(res => res.json())
+    .then(peliculas => {
+      const galeria = document.getElementById('galeria');
+      galeria.innerHTML = '';
+      peliculas.forEach(peli => {
+        const img = document.createElement('img');
+        img.src = peli.imagen;
+        img.alt = peli.titulo;
+        galeria.appendChild(img);
+      });
+    })
+    .catch(err => {
+      console.error('Error cargando películas:', err);
+    });
+</script>
+  
 </body>
 </html>
