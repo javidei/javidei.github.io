@@ -97,6 +97,8 @@
     const API_KEY = 'AIzaSyB1ljgpeiX3ayIFHqpe2NqMWRvMwpOFcYg';
   
     function buscarLibros(query) {
+      localStorage.setItem('ultimaBusqueda', query);
+  
       fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&key=${API_KEY}`)
         .then(response => response.json())
         .then(data => {
@@ -135,15 +137,19 @@
         });
     }
   
-    // Evento de búsqueda
+    // Al enviar el formulario
     document.getElementById('form-busqueda').addEventListener('submit', e => {
       e.preventDefault();
       const query = document.getElementById('input-busqueda').value.trim();
       if (query) buscarLibros(query);
     });
   
-    // Opcional: búsqueda inicial
-    buscarLibros('Una corte de rosas y espinas');
+    // Al cargar la página
+    window.addEventListener('DOMContentLoaded', () => {
+      const ultima = localStorage.getItem('ultimaBusqueda') || 'Una corte de rosas y espinas';
+      document.getElementById('input-busqueda').value = ultima;
+      buscarLibros(ultima);
+    });
   </script>
   
 </body>
