@@ -1,3 +1,4 @@
+<!--
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,5 +9,88 @@
 <body>
   <h1>Hola, soy Javi</h1>
   <p>¡Bienvenido a mi web personal!</p>
+</body>
+</html>
+-->
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Página de Javi</title>
+  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/7/74/Flat_tick_icon.svg">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background: linear-gradient(to right, #4e54c8, #8f94fb);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 3rem;
+    }
+
+    p {
+      font-size: 1.2rem;
+    }
+
+    .galeria {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      padding: 2rem;
+    }
+
+    .galeria img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .galeria img:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      background: #333;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Bienvenido a la página de Javi</h1>
+    <p>Un lugar donde comparto mis gustos y proyectos</p>
+  </header>
+
+  <section class="galeria">
+    <img src="https://source.unsplash.com/random/800x600?nature" alt="Imagen de naturaleza">
+    <img src="https://source.unsplash.com/random/800x600?technology" alt="Imagen de tecnología">
+    <img src="https://source.unsplash.com/random/800x600?space" alt="Imagen del espacio">
+    <img src="https://source.unsplash.com/random/800x600?city" alt="Imagen de ciudad">
+    <img src="https://source.unsplash.com/random/800x600?ocean" alt="Imagen del mar">
+    <img src="https://source.unsplash.com/random/800x600?mountains" alt="Imagen de montañas">
+  </section>
+
+  <footer>
+    © 2025 - Javi Dei
+  </footer>
 </body>
 </html>
