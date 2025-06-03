@@ -1,31 +1,24 @@
-<!--
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>Mi página web</title>
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-  <h1>Hola, soy Javi</h1>
-  <p>¡Bienvenido a mi web personal!</p>
-</body>
-</html>
--->
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Página de Javi</title>
-  <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/7/74/Flat_tick_icon.svg">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html, body {
+      height: 100%;
       font-family: 'Segoe UI', sans-serif;
-      background: #f9f9f9;
+      background: #f4f4f4;
       color: #333;
+      display: flex;
+      flex-direction: column;
     }
 
     header {
@@ -37,12 +30,12 @@
     }
 
     h1 {
-      margin: 0;
       font-size: 3rem;
     }
 
     p {
       font-size: 1.2rem;
+      margin-top: 0.5rem;
     }
 
     .galeria {
@@ -50,6 +43,7 @@
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 1rem;
       padding: 2rem;
+      flex: 1;
     }
 
     .galeria img {
@@ -70,7 +64,7 @@
       color: white;
       text-align: center;
       padding: 1rem;
-      margin-top: 2rem;
+      margin-top: auto;
     }
   </style>
 </head>
@@ -81,12 +75,12 @@
   </header>
 
   <section class="galeria">
-    <img src="https://source.unsplash.com/random/800x600?nature" alt="Imagen de naturaleza">
-    <img src="https://source.unsplash.com/random/800x600?technology" alt="Imagen de tecnología">
-    <img src="https://source.unsplash.com/random/800x600?space" alt="Imagen del espacio">
-    <img src="https://source.unsplash.com/random/800x600?city" alt="Imagen de ciudad">
-    <img src="https://source.unsplash.com/random/800x600?ocean" alt="Imagen del mar">
-    <img src="https://source.unsplash.com/random/800x600?mountains" alt="Imagen de montañas">
+    <img src="https://images.pexels.com/photos/34950/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=600" alt="Naturaleza">
+    <img src="https://images.pexels.com/photos/18105/pexels-photo.jpg?auto=compress&cs=tinysrgb&h=600" alt="Tecnología">
+    <img src="https://images.pexels.com/photos/87009/pexels-photo-87009.jpeg?auto=compress&cs=tinysrgb&h=600" alt="Espacio">
+    <img src="https://images.pexels.com/photos/374870/pexels-photo-374870.jpeg?auto=compress&cs=tinysrgb&h=600" alt="Ciudad">
+    <img src="https://images.pexels.com/photos/261481/pexels-photo-261481.jpeg?auto=compress&cs=tinysrgb&h=600" alt="Océano">
+    <img src="https://images.pexels.com/photos/158607/cairn-fog-mystical-background-158607.jpeg?auto=compress&cs=tinysrgb&h=600" alt="Montañas">
   </section>
 
   <footer>
