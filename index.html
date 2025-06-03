@@ -20,9 +20,13 @@
       display: flex;
       flex-direction: column;
     }
-
+    
     header {
-      background: linear-gradient(to right, #4e54c8, #8f94fb);
+      background: 
+        linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
+        url('https://images.unsplash.com/photo-1512820790803-83ca734da794?auto=compress&cs=tinysrgb&h=600');
+      background-size: cover;
+      background-position: center;
       color: white;
       padding: 2rem;
       text-align: center;
@@ -70,8 +74,8 @@
 </head>
 <body>
   <header>
-    <h1>Bienvenido a la página de Javi</h1>
-    <p>Un lugar donde comparto mis gustos y proyectos</p>
+    <h1>Explora conmigo</h1>
+    <p>Descubre libros, ideas y cosas que me inspiran cada día</p>
     <form id="form-busqueda" style="margin-top: 1rem;">
       <input type="text" id="input-busqueda" placeholder="Buscar libros..." style="padding: 0.5rem; font-size: 1rem; border-radius: 5px; border: none; width: 250px;">
       <button type="submit" style="padding: 0.5rem 1rem; margin-left: 0.5rem; border: none; border-radius: 5px; background: #333; color: white; font-size: 1rem;">Buscar</button>
