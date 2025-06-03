@@ -1,0 +1,14 @@
+[
+  {
+    "titulo": "El Padrino",
+    "imagen": "https://upload.wikimedia.org/wikipedia/en/1/1c/Godfather_ver1.jpg"
+  },
+  {
+    "titulo": "Pulp Fiction",
+    "imagen": "https://upload.wikimedia.org/wikipedia/en/8/82/Pulp_Fiction_cover.jpg"
+  },
+  {
+    "titulo": "Matrix",
+    "imagen": "https://upload.wikimedia.org/wikipedia/en/c/c1/The_Matrix_Poster.jpg"
+  }
+]
