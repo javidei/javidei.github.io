@@ -72,6 +72,10 @@
   <header>
     <h1>Bienvenido a la página de Javi</h1>
     <p>Un lugar donde comparto mis gustos y proyectos</p>
+    <form id="form-busqueda" style="margin-top: 1rem;">
+      <input type="text" id="input-busqueda" placeholder="Buscar libros..." style="padding: 0.5rem; font-size: 1rem; border-radius: 5px; border: none; width: 250px;">
+      <button type="submit" style="padding: 0.5rem 1rem; margin-left: 0.5rem; border: none; border-radius: 5px; background: #333; color: white; font-size: 1rem;">Buscar</button>
+    </form>
   </header>
 
   <!--<section class="galeria">
@@ -90,39 +94,56 @@
   </footer>
 
   <script>
-    const API_KEY = 'AIzaSyB1ljgpeiX3ayIFHqpe2NqMWRvMwpOFcYg'; // <-- Pega aquí tu API key
-    const QUERY = 'Una corte de rosas y espinas'; // Cambia esto por lo que quieras buscar
+    const API_KEY = 'AIzaSyB1ljgpeiX3ayIFHqpe2NqMWRvMwpOFcYg';
   
-    fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(QUERY)}&key=${API_KEY}`)
-      .then(response => response.json())
-      .then(data => {
-        const galeria = document.getElementById('galeria');
-        galeria.innerHTML = '';
+    function buscarLibros(query) {
+      fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&key=${API_KEY}`)
+        .then(response => response.json())
+        .then(data => {
+          const galeria = document.getElementById('galeria');
+          galeria.innerHTML = '';
   
-        data.items.forEach(item => {
-          const libro = item.volumeInfo;
+          if (!data.items) {
+            galeria.innerHTML = '<p style="text-align:center; width:100%;">No se encontraron resultados.</p>';
+            return;
+          }
   
-          const contenedor = document.createElement('div');
-          contenedor.style.display = 'flex';
-          contenedor.style.flexDirection = 'column';
-          contenedor.style.alignItems = 'center';
+          data.items.forEach(item => {
+            const libro = item.volumeInfo;
+            const contenedor = document.createElement('div');
+            contenedor.style.display = 'flex';
+            contenedor.style.flexDirection = 'column';
+            contenedor.style.alignItems = 'center';
   
-          const img = document.createElement('img');
-          img.src = libro.imageLinks?.thumbnail || 'https://via.placeholder.com/128x200?text=Sin+portada';
-          img.alt = libro.title;
+            const img = document.createElement('img');
+            img.src = libro.imageLinks?.thumbnail || 'https://via.placeholder.com/128x200?text=Sin+portada';
+            img.alt = libro.title;
   
-          const titulo = document.createElement('p');
-          titulo.textContent = libro.title;
-          titulo.style.marginTop = '0.5rem';
-          titulo.style.fontWeight = 'bold';
-          titulo.style.textAlign = 'center';
+            const titulo = document.createElement('p');
+            titulo.textContent = libro.title;
+            titulo.style.marginTop = '0.5rem';
+            titulo.style.fontWeight = 'bold';
+            titulo.style.textAlign = 'center';
   
-          contenedor.appendChild(img);
-          contenedor.appendChild(titulo);
-          galeria.appendChild(contenedor);
+            contenedor.appendChild(img);
+            contenedor.appendChild(titulo);
+            galeria.appendChild(contenedor);
+          });
+        })
+        .catch(err => {
+          console.error('Error al cargar libros:', err);
         });
-      })
-      .catch(err => console.error('Error al cargar libros:', err));
+    }
+  
+    // Evento de búsqueda
+    document.getElementById('form-busqueda').addEventListener('submit', e => {
+      e.preventDefault();
+      const query = document.getElementById('input-busqueda').value.trim();
+      if (query) buscarLibros(query);
+    });
+  
+    // Opcional: búsqueda inicial
+    buscarLibros('Una corte de rosas y espinas');
   </script>
   
 </body>
