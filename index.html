@@ -122,6 +122,10 @@
             contenedor.style.display = 'flex';
             contenedor.style.flexDirection = 'column';
             contenedor.style.alignItems = 'center';
+            contenedor.style.cursor = 'pointer';
+
+            // Añadimos el tooltip aquí
+            contenedor.title = 'Ir a video de youtube relacionado';
   
             const img = document.createElement('img');
             img.src = libro.imageLinks?.thumbnail || 'https://placehold.co/128x192/png?text=Sin+portada';
