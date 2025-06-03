@@ -1,3 +1,3 @@
-# javidei.github.io
-Página de javidei /n
-0.0.1.0: Se añade el Favicon en la pestaña principal
+# javidei.github.io  
+Página de javidei  
+Versión 0.0.1: Se añade el Favicon en la pestaña principal
