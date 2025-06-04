@@ -137,12 +137,11 @@
             titulo.style.marginTop = '0.5rem';
             titulo.style.fontWeight = 'bold';
             titulo.style.textAlign = 'center';
-  
+
             const autor = document.createElement('p');
             autor.textContent = libro.authors ? `Autor: ${libro.authors.join(', ')}` : 'Autor desconocido';
-            autor.style.fontSize = '1rem';
-            autor.style.margin = '0.2rem 0';
-            autor.style.color = '#555'; // opcional, para que se vea más suave
+            autor.style.all = 'unset'; // 🔥 Borra todos los estilos heredados
+            autor.style.fontSize = '0.75rem'; // Opcional, para que se vea un poco más pequeño
   
             contenedor.appendChild(img);
             contenedor.appendChild(autor);
