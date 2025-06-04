@@ -11,8 +11,8 @@ html, body {
   font-family: 'Segoe UI', sans-serif;
   background: #fff8e7; /* ← nuevo color crema */
   color: #333;
-  display: flex;
-  flex-direction: column;
+  padding-top: 160px;   /* ← espacio para el header fijo */
+  padding-bottom: 80px; /* ← espacio para el footer fijo */
 }
 
 header {
@@ -25,6 +25,25 @@ header {
   padding: 2rem;
   text-align: center;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+
+  /* NUEVO: fijar arriba */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+footer {
+  background: #333;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+
+  /* NUEVO: fijar abajo */
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 h1 {
@@ -72,14 +91,6 @@ p {
   box-shadow: 0 4px 8px rgba(0,0,0,0.15);
 }
 
-footer {
-  background: #333;
-  color: white;
-  text-align: center;
-  padding: 1rem;
-  margin-top: auto;
-}
-
 .icono-h1 {
   width: 32px;
   height: 32px;
@@ -88,7 +99,7 @@ footer {
 }
 
 header {
-  position: relative; /* importante para que la posición absoluta funcione dentro */
+  position: fixed; /* ← ya aplicado arriba */
 }
 
 .favicon-header {
@@ -178,4 +189,3 @@ a:hover h2 {
 .botones button {
   margin: 0.5rem;
 }
-
