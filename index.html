@@ -141,11 +141,16 @@
   
             const autor = document.createElement('p');
             autor.textContent = libro.authors ? `Autor: ${libro.authors.join(', ')}` : 'Autor desconocido';
+
+            autor.style.fontSize = '0.5rem';
+            autor.style.border = 'none';
+            autor.style.margin = '0.2rem 0';
+            autor.style.color = '#555'; // opcional, para que se vea más suave
   
             contenedor.appendChild(img);
-            contenedor.appendChild(titulo);
             contenedor.appendChild(autor);
-  
+            contenedor.appendChild(titulo);
+            
             img.addEventListener('click', () => {
               const youtubeSearchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(libro.title + ' book review')}`;
               window.open(youtubeSearchUrl, '_blank');
