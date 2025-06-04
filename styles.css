@@ -9,7 +9,7 @@
 html, body {
   height: 100%;
   font-family: 'Segoe UI', sans-serif;
-  background: #f4f4f4;
+  background: #fff8e7; /* ← nuevo color crema */
   color: #333;
   display: flex;
   flex-direction: column;
