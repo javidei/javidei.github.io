@@ -95,79 +95,86 @@
   
   <section class="galeria" id="galeria"></section>
 
-  <footer>
-    © 2025 - Javier Díaz
-  </footer>
+<!-- Botón para ir a otra pantalla -->
+<button id="ir-a-otra-pantalla" style="margin: 2rem auto; display: block;">
+  Ir a otra pantalla
+</button>
 
-  <script>
-    const API_KEY = 'AIzaSyB1ljgpeiX3ayIFHqpe2NqMWRvMwpOFcYg';
-  
-    function buscarLibros(query) {
-      localStorage.setItem('ultimaBusqueda', query);
-  
-      fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&key=${API_KEY}`)
-        .then(response => response.json())
-        .then(data => {
-          const galeria = document.getElementById('galeria');
-          galeria.innerHTML = '';
-  
-          if (!data.items) {
-            galeria.innerHTML = '<p style="text-align:center; width:100%;">No se encontraron resultados.</p>';
-            return;
-          }
-  
-          data.items.forEach(item => {
-            const libro = item.volumeInfo;
-            const contenedor = document.createElement('div');
-            contenedor.style.display = 'flex';
-            contenedor.style.flexDirection = 'column';
-            contenedor.style.alignItems = 'center';
-            contenedor.style.cursor = 'pointer';
+<footer>
+  © 2025 - Javier Díaz
+</footer>
 
-            // Añadimos el tooltip aquí
-            contenedor.title = 'Ir a video de youtube relacionado';
-  
-            const img = document.createElement('img');
-            img.src = libro.imageLinks?.thumbnail || 'https://placehold.co/128x192/png?text=Sin+portada';
-            img.alt = libro.title;
-  
-            const titulo = document.createElement('p');
-            titulo.textContent = libro.title;
-            titulo.style.marginTop = '0.5rem';
-            titulo.style.fontWeight = 'bold';
-            titulo.style.textAlign = 'center';
-  
-            contenedor.appendChild(img);
-            contenedor.appendChild(titulo);
+<script>
+  const API_KEY = 'AIzaSyB1ljgpeiX3ayIFHqpe2NqMWRvMwpOFcYg';
 
-            // Añadir evento click para abrir YouTube con búsqueda del título del libro
-            contenedor.addEventListener('click', () => {
-              const youtubeSearchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(libro.title + ' book review')}`;
-              window.open(youtubeSearchUrl, '_blank');
-            });
-            
-            galeria.appendChild(contenedor);
+  function buscarLibros(query) {
+    localStorage.setItem('ultimaBusqueda', query);
+
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&key=${API_KEY}`)
+      .then(response => response.json())
+      .then(data => {
+        const galeria = document.getElementById('galeria');
+        galeria.innerHTML = '';
+
+        if (!data.items) {
+          galeria.innerHTML = '<p style="text-align:center; width:100%;">No se encontraron resultados.</p>';
+          return;
+        }
+
+        data.items.forEach(item => {
+          const libro = item.volumeInfo;
+          const contenedor = document.createElement('div');
+          contenedor.style.display = 'flex';
+          contenedor.style.flexDirection = 'column';
+          contenedor.style.alignItems = 'center';
+          contenedor.style.cursor = 'pointer';
+
+          contenedor.title = 'Ir a video de youtube relacionado';
+
+          const img = document.createElement('img');
+          img.src = libro.imageLinks?.thumbnail || 'https://placehold.co/128x192/png?text=Sin+portada';
+          img.alt = libro.title;
+
+          const titulo = document.createElement('p');
+          titulo.textContent = libro.title;
+          titulo.style.marginTop = '0.5rem';
+          titulo.style.fontWeight = 'bold';
+          titulo.style.textAlign = 'center';
+
+          contenedor.appendChild(img);
+          contenedor.appendChild(titulo);
+
+          contenedor.addEventListener('click', () => {
+            const youtubeSearchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(libro.title + ' book review')}`;
+            window.open(youtubeSearchUrl, '_blank');
           });
-        })
-        .catch(err => {
-          console.error('Error al cargar libros:', err);
+
+          galeria.appendChild(contenedor);
         });
-    }
-  
-    // Al enviar el formulario
-    document.getElementById('form-busqueda').addEventListener('submit', e => {
-      e.preventDefault();
-      const query = document.getElementById('input-busqueda').value.trim();
-      if (query) buscarLibros(query);
-    });
-  
-    // Al cargar la página
-    window.addEventListener('DOMContentLoaded', () => {
-      const ultima = localStorage.getItem('ultimaBusqueda') || 'Una corte de rosas y espinas';
-      document.getElementById('input-busqueda').value = ultima;
-      buscarLibros(ultima);
-    });
-  </script>
+      })
+      .catch(err => {
+        console.error('Error al cargar libros:', err);
+      });
+  }
+
+  document.getElementById('form-busqueda').addEventListener('submit', e => {
+    e.preventDefault();
+    const query = document.getElementById('input-busqueda').value.trim();
+    if (query) buscarLibros(query);
+  });
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const ultima = localStorage.getItem('ultimaBusqueda') || 'Una corte de rosas y espinas';
+    document.getElementById('input-busqueda').value = ultima;
+    buscarLibros(ultima);
+  });
+
+  // Evento del nuevo botón
+  document.getElementById('ir-a-otra-pantalla').addEventListener('click', () => {
+    window.location.href = 'otra-pantalla.html'; // Reemplaza con tu archivo real
+  });
+</script>
+
   
 </body>
 </html>
