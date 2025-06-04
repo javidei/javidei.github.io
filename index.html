@@ -36,7 +36,8 @@
   function buscarLibros(query) {
     localStorage.setItem('ultimaBusqueda', query);
 
-    fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&key=${API_KEY}`)
+    // Marcamos el máximo de resultados con el maxResults=20
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&maxResults=20&key=${API_KEY}`)
       .then(response => response.json())
       .then(data => {
         const galeria = document.getElementById('galeria');
