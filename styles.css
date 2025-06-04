@@ -11,7 +11,6 @@ html, body {
   font-family: 'Segoe UI', sans-serif;
   background: #fff8e7; /* ← nuevo color crema */
   color: #333;
-  padding-top: 160px;   /* ← espacio para el header fijo */
   padding-bottom: 80px; /* ← espacio para el footer fijo */
 }
 
