@@ -106,3 +106,8 @@ header {
   height: 32px;
   margin-right: 0.5rem;
 }
+
+a:hover h2 {
+  text-decoration: none;
+  color: inherit;
+}
