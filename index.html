@@ -21,6 +21,8 @@
       <button type="submit" class="btn-buscar">Buscar</button>
       <button type="button" id="idPgDetalle" class="btn-detalles">Pantalla detalles</button>
     </form>
+    <div id="auth-area" style="position: absolute; top: 1rem; right: 1rem;"></div>
+
   </header>
 
   <!-- Controles de paginación -->
@@ -137,7 +139,61 @@
     document.getElementById('idPgDetalle').addEventListener('click', () => {
       window.location.href = 'detalle.html';
     });
-</script>
+
+     const firebaseConfig = {
+        apiKey: "TU_API_KEY",
+        authDomain: "libreriastilton.firebaseapp.com",
+        projectId: "TU_PROJECT_ID",
+        appId: "TU_APP_ID"
+      };
+      firebase.initializeApp(firebaseConfig);
+      const auth = firebase.auth();
+    
+  </script>
+    <!-- SCRIPT PARA BBDD DE FIREBASE -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCOHxEj9Owzx8XXLnvlKfsQcCAveSfX_5k",
+      authDomain: "TU_DOMINIO.firebaseapp.com",
+      projectId: "libreriastilton",
+      appId: "1:364473284806:web:411cbfcb4cee9dd532bfc7"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+  </script>
+  <script>
+    const authArea = document.getElementById('auth-area');
+  
+    function renderAuthUI(user) {
+      if (user) {
+        authArea.innerHTML = `
+          <span>Hola, ${user.email}</span>
+          <button onclick="logout()">Salir</button>
+        `;
+      } else {
+        authArea.innerHTML = `
+          <button onclick="showLogin()">Iniciar sesión</button>
+        `;
+      }
+    }
+  
+    function showLogin() {
+      const email = prompt("Correo:");
+      const password = prompt("Contraseña:");
+      auth.signInWithEmailAndPassword(email, password)
+        .catch(e => alert("Error: " + e.message));
+    }
+  
+    function logout() {
+      auth.signOut();
+    }
+  
+    auth.onAuthStateChanged(user => {
+      renderAuthUI(user);
+    });
+  </script>
 
 </body>
 </html>
