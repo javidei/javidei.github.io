@@ -44,6 +44,8 @@
         }
 
         data.items.forEach(item => {
+          console.log(libro); // ← esto es item.volumeInfo
+
           const libro = item.volumeInfo;
           const contenedor = document.createElement('div');
           contenedor.style.display = 'flex';
@@ -63,6 +65,21 @@
           titulo.style.fontWeight = 'bold';
           titulo.style.textAlign = 'center';
 
+          // MODO TEST INICIO (Eliminar)
+              const descripcion = document.createElement('p');
+              descripcion.textContent = libro.description || 'Sin descripción';
+              
+              const autor = document.createElement('p');
+              autor.textContent = libro.authors ? `Autor: ${libro.authors.join(', ')}` : 'Autor desconocido';
+              
+              const publicado = document.createElement('p');
+              publicado.textContent = libro.publishedDate ? `Publicado: ${libro.publishedDate}` : '';
+              
+              contenedor.appendChild(descripcion);
+              contenedor.appendChild(autor);
+              contenedor.appendChild(publicado);
+          // MODO TEST FIN
+          
           contenedor.appendChild(img);
           contenedor.appendChild(titulo);
 
