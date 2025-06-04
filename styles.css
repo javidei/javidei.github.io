@@ -73,3 +73,15 @@ footer {
   vertical-align: middle;
   margin-right: 0.5rem;
 }
+
+header {
+  position: relative; /* importante para que la posición absoluta funcione dentro */
+}
+
+.favicon-header {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 32px;
+  height: 32px;
+}
