@@ -45,8 +45,8 @@ p {
 }
 
 .galeria img {
-  width: 256px;
-  height: 384px;
+  width: 200px;
+  height: 300px;
   object-fit: contain;
   background: #fff;
   padding: 0.5rem;
