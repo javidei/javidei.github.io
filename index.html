@@ -46,21 +46,6 @@
   <footer>
     © 2025 - Javier Díaz - API googleapis
   </footer>
-
-  <!-- VENTANA MODAL DE REGISTRO -->
-  <div id="modal-auth" class="modal" style="display:none;">
-    <div class="modal-contenido">
-      <h4>Autenticación</h4>
-      <input type="email" id="email" placeholder="Email">
-      <input type="password" id="password" placeholder="Contraseña">
-      <div class="botones">
-        <button id="btn-ingresar">Login</button>
-        <button id="btn-registrar">Registro</button>
-        <button id="btn-cerrar-modal">Cerrar</button>
-      </div>
-    </div>
-  </div
-
   <script>
     const API_KEY = 'AIzaSyB1ljgpeiX3ayIFHqpe2NqMWRvMwpOFcYg';
     let paginaActual = 0;
@@ -163,7 +148,7 @@
       window.location.href = 'detalle.html';
     });
 
-    /*const firebaseConfig = {
+    const firebaseConfig = {
       apiKey: "AIzaSyCOHxEj9Owzx8XXLnvlKfsQcCAveSfX_5k",
       authDomain: "libreriastilton.firebaseapp.com",
       projectId: "libreriastilton",
@@ -208,9 +193,23 @@
         btnLogin.style.display = 'inline-block';
         btnLogout.style.display = 'none';
       }
-    });*/
+    });
     
   </script>
 
+  <!-- VENTANA MODAL DE REGISTRO -->
+  <div id="modal-auth" class="modal" style="display:none;">
+    <div class="modal-contenido">
+      <h4>Autenticación</h4>
+      <input type="email" id="email" placeholder="Email">
+      <input type="password" id="password" placeholder="Contraseña">
+      <div class="botones">
+        <button id="btn-ingresar">Login</button>
+        <button id="btn-registrar">Registro</button>
+        <button id="btn-cerrar-modal">Cerrar</button>
+      </div>
+    </div>
+  </div
+    
 </body>
 </html>
