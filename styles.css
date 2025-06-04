@@ -6,7 +6,14 @@
   box-sizing: border-box;
 }
 
-
+html, body {
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  background: #fff8e7; /* ← nuevo color crema */
+  color: #333;
+  padding-top: 70px; /* ← espacio superior fijo para en main */
+  padding-bottom: 80px; /* ← espacio para el footer fijo */
+}
 
 header {
   background: 
@@ -201,10 +208,10 @@ a:hover h2 {
 }
 
 /* Elimina el espacio extra superior entre el header y la galería */
-main, .contenido-principal {
+/*main, .contenido-principal {
   margin-top: 0.5rem !important;
   padding-top: 0 !important;
-}
+}*/
 
 button:disabled {
   opacity: 0.6;
