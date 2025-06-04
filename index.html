@@ -22,7 +22,16 @@
       <button type="button" id="idPgDetalle" class="btn-detalles">Pantalla detalles</button>
     </form>
     <div id="auth-area" style="position: absolute; top: 1rem; right: 1rem;"></div>
+    <!-- Firebase App + Auth -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
 
+    <div id="usuario-info" class="usuario-info" style="position: absolute; top: 1rem; right: 1rem;">
+      <span id="nombre-usuario"></span>
+      <button id="btn-login" class="btn btn-sm btn-outline-dark">Iniciar sesión</button>
+      <button id="btn-logout" class="btn btn-sm btn-outline-danger" style="display:none;">Salir</button>
+    </div>
+    
   </header>
 
   <!-- Controles de paginación -->
@@ -37,6 +46,20 @@
   <footer>
     © 2025 - Javier Díaz - API googleapis
   </footer>
+
+  <!-- VENTANA MODAL DE REGISTRO -->
+  <div id="modal-auth" class="modal" style="display:none;">
+    <div class="modal-contenido">
+      <h4>Autenticación</h4>
+      <input type="email" id="email" placeholder="Email">
+      <input type="password" id="password" placeholder="Contraseña">
+      <div class="botones">
+        <button id="btn-ingresar">Login</button>
+        <button id="btn-registrar">Registro</button>
+        <button id="btn-cerrar-modal">Cerrar</button>
+      </div>
+    </div>
+  </div
 
   <script>
     const API_KEY = 'AIzaSyB1ljgpeiX3ayIFHqpe2NqMWRvMwpOFcYg';
@@ -139,12 +162,7 @@
     document.getElementById('idPgDetalle').addEventListener('click', () => {
       window.location.href = 'detalle.html';
     });
-    
-  </script>
-    <!-- SCRIPT PARA BBDD DE FIREBASE -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.1/firebase-auth.js"></script>
-  <script>
+
     const firebaseConfig = {
       apiKey: "AIzaSyCOHxEj9Owzx8XXLnvlKfsQcCAveSfX_5k",
       authDomain: "TU_DOMINIO.firebaseapp.com",
@@ -153,7 +171,9 @@
     };
     firebase.initializeApp(firebaseConfig);
     const auth = firebase.auth();
+    
   </script>
+
   <script>
     const authArea = document.getElementById('auth-area');
   
