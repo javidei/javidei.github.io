@@ -44,7 +44,6 @@
         }
 
         data.items.forEach(item => {
-          console.log(libro); // ← esto es item.volumeInfo
 
           const libro = item.volumeInfo;
           const contenedor = document.createElement('div');
@@ -60,12 +59,14 @@
           img.alt = libro.title;
 
           const titulo = document.createElement('p');
-          titulo.textContent = libro.titulo;
+          titulo.textContent = libro.title;
           titulo.style.marginTop = '0.5rem';
           titulo.style.fontWeight = 'bold';
           titulo.style.textAlign = 'center';
 
           // MODO TEST INICIO (Eliminar)
+              console.log(libro); // ← esto es item.volumeInfo
+
               const descripcion = document.createElement('p');
               descripcion.textContent = libro.description || 'Sin descripción';
               
