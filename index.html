@@ -69,7 +69,7 @@
           contenedor.appendChild(img);
           contenedor.appendChild(titulo);
 
-          contenedor.addEventListener('click', () => {
+          img.addEventListener('click', () => {
             const youtubeSearchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(libro.title + ' book review')}`;
             window.open(youtubeSearchUrl, '_blank');
           });
