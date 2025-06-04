@@ -64,11 +64,14 @@
           titulo.style.fontWeight = 'bold';
           titulo.style.textAlign = 'center';
 
+          contenedor.appendChild(img);
+          contenedor.appendChild(titulo);
+
           // MODO TEST INICIO (Eliminar)
               console.log(libro); // ← esto es item.volumeInfo
 
-              const descripcion = document.createElement('p');
-              descripcion.textContent = libro.description || 'Sin descripción';
+              //const descripcion = document.createElement('p');
+              //descripcion.textContent = libro.description || 'Sin descripción';
               
               const autor = document.createElement('p');
               autor.textContent = libro.authors ? `Autor: ${libro.authors.join(', ')}` : 'Autor desconocido';
@@ -76,13 +79,10 @@
               const publicado = document.createElement('p');
               publicado.textContent = libro.publishedDate ? `Publicado: ${libro.publishedDate}` : '';
               
-              contenedor.appendChild(descripcion);
+              //contenedor.appendChild(descripcion);
               contenedor.appendChild(autor);
               contenedor.appendChild(publicado);
           // MODO TEST FIN
-          
-          contenedor.appendChild(img);
-          contenedor.appendChild(titulo);
 
           img.addEventListener('click', () => {
             const youtubeSearchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(libro.title + ' book review')}`;
