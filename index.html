@@ -128,7 +128,7 @@
     });
   
     window.addEventListener('DOMContentLoaded', () => {
-      const ultima = localStorage.getItem('ultimaBusqueda') || 'Una corte de rosas y espinas';
+      const ultima = localStorage.getItem('ultimaBusqueda') || 'Gerónimo Stilton';
       document.getElementById('input-busqueda').value = ultima;
       paginaActual = 0;
       buscarLibros(ultima, 0);
