@@ -45,7 +45,7 @@
     <section class="galeria" id="galeria"></section>
   </div>
                                                                       <footer>
-                                                                        © 2025 - Javier Díaz - API googleapis - v0.0.14 (beta)
+                                                                        © 2025 - Javier Díaz - API googleapis - v0.0.15 (beta)
                                                                       </footer>
 
   <!-- VENTANA MODAL DE REGISTRO BONITA -->
@@ -83,9 +83,17 @@
     let totalItems = 0;
   
     function actualizarBotones() {
-      document.getElementById('btnAnterior').style.display = paginaActual > 0 ? 'inline-block' : 'none';
+      const btnAnterior = document.getElementById('btnAnterior');
+      const btnSiguiente = document.getElementById('btnSiguiente');
+    
+      // Mostrar siempre los botones
+      btnAnterior.style.display = 'inline-block';
+      btnSiguiente.style.display = 'inline-block';
+    
+      // Deshabilitar si corresponde
+      btnAnterior.disabled = paginaActual <= 0;
       const hayMasResultados = (paginaActual + 1) * resultadosPorPagina < totalItems;
-      document.getElementById('btnSiguiente').style.display = hayMasResultados ? 'inline-block' : 'none';
+      btnSiguiente.disabled = !hayMasResultados;
     }
   
     function buscarLibros(query, startIndex = 0) {
