@@ -76,12 +76,12 @@
               const autor = document.createElement('p');
               autor.textContent = libro.authors ? `Autor: ${libro.authors.join(', ')}` : 'Autor desconocido';
               
-              const publicado = document.createElement('p');
-              publicado.textContent = libro.publishedDate ? `Publicado: ${libro.publishedDate}` : '';
+              //const publicado = document.createElement('p');
+              //publicado.textContent = libro.publishedDate ? `Publicado: ${libro.publishedDate}` : '';
               
               //contenedor.appendChild(descripcion);
               contenedor.appendChild(autor);
-              contenedor.appendChild(publicado);
+              //contenedor.appendChild(publicado);
           // MODO TEST FIN
 
           img.addEventListener('click', () => {
