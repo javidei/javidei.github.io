@@ -189,3 +189,26 @@ a:hover h2 {
 .botones button {
   margin: 0.5rem;
 }
+
+.paginacion-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1rem 2rem 0.5rem 2rem;
+}
+
+.galeria-libros {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0 auto;
+  max-width: 1200px;
+  padding: 0 1rem;
+}
+
+/* Elimina el espacio extra superior entre el header y la galería */
+main, .contenido-principal {
+  margin-top: 0.5rem !important;
+  padding-top: 0 !important;
+}
