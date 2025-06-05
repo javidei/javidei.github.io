@@ -12,6 +12,11 @@
   
   <!-- HEADER -->
   <header>
+
+    <!-- Firebase App + Auth -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+
     <a href="https://javidei.github.io/" style="text-decoration: none;">
       <h2 class="favicon-header">
         <img src="logoStilton.png" alt="Logo" class="favicon-img" /> Librería Stilton
@@ -23,12 +28,14 @@
       <button type="submit" class="btn-buscar">Buscar</button>
       <button type="button" id="idPgDetalle" class="btn-detalles">Películas</button>
     </form>
+   
 
     <div id="usuario-info" class="usuario-info" style="position: absolute; top: 1rem; right: 1rem;">
       <span id="nombre-usuario"></span>
       <button id="btn-login" class="btn btn-sm btn-outline-dark">Iniciar sesión</button>
       <button id="btn-logout" class="btn btn-sm btn-outline-danger" style="display:none;">Salir</button>
     </div>
+
   </header>
 
 
