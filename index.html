@@ -46,7 +46,11 @@
   </main>
   
   <!-- FOOTER -->
-  <div id="footer-container"></div>
+<!--   <div id="footer-container"></div>
+ -->
+  <footer>
+    <div>© 2025 - Javier Díaz - API googleapis - v0.0.29 (beta)</div>
+  </footer>
  
 
   <!-- VENTANA MODAL DE REGISTRO BONITA -->
@@ -147,13 +151,13 @@
               window.open(youtubeSearchUrl, '_blank');
             });*/
 
-            img.addEventListener('click', () => {
+            /*img.addEventListener('click', () => {
               window.location.href = `detallelibro.html?id=${item.id}`;
             });
             
             titulo.addEventListener('click', () => {
               window.location.href = `detallelibro.html?id=${item.id}`;
-            });
+            });*/
   
             galeria.appendChild(contenedor);
           });
@@ -244,11 +248,11 @@
       }
     });
 
-    fetch("footer.html")
+    /*fetch("footer.html")
     .then(res => res.text())
     .then(html => {
       document.getElementById("footer-container").innerHTML = html;
-    });
+    });*/
 
   </script>
 
