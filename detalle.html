@@ -9,28 +9,39 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <!-- HEADER -->
   <header>
     <a href="https://javidei.github.io/" style="text-decoration: none;">
       <h2 class="favicon-header">
         <img src="logoStilton.png" alt="Logo" class="favicon-img" /> Librería Stilton
       </h2>
     </a>
-    <p>Página de Detalles</p>
+    <p>Descubre libros, ideas y cosas que me inspiran cada día</p>
+    <form id="form-busqueda" style="margin-top: 1rem;">
+      <input type="text" id="input-busqueda" class="campo-busqueda" placeholder="Buscar libros..." />
+      <button type="submit" class="btn-buscar">Buscar</button>
+      <button type="button" id="idPgDetalle" class="btn-detalles">Películas</button>
+    </form>
+
+    <div id="usuario-info" class="usuario-info" style="position: absolute; top: 1rem; right: 1rem;">
+      <span id="nombre-usuario"></span>
+      <button id="btn-login" class="btn btn-sm btn-outline-dark">Iniciar sesión</button>
+      <button id="btn-logout" class="btn btn-sm btn-outline-danger" style="display:none;">Salir</button>
+    </div>
   </header>
- <!-- Seccion de contenido de libros -->
+
+  <!-- Seccion de contenido de libros -->
   <section class="galeria" id="galeria"></section>
 
-<div id="footer-container"></div>
+  <div id="footer-container"></div>
 
+  <script>
+  fetch("footer.html")
+      .then(res => res.text())
+      .then(html => {
+        document.getElementById("footer-container").innerHTML = html;
+      });
+  </script>
 
-<script>
-fetch("footer.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("footer-container").innerHTML = html;
-    });
-</script>
-
-  
 </body>
 </html>
