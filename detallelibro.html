@@ -16,14 +16,8 @@
     <h1 class="mb-4 text-center">Cargando detalles...</h1>
   </div>
 
-  <footer>
-    <div>© 2025 - Javier Díaz - v0.0.32 (beta)</div>
-    <div>
-      <a href="https://www.youtube.com/watch?v=wW9TwZdWpjw" target="_blank" title="Visita mi canal de YouTube">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube" style="height: 24px;">
-      </a>
-    </div>
-  </footer>
+  <!-- FOOTER -->
+  <div id="footer-container"></div>
 
   <script>
     const API_KEY = 'AIzaSyB1ljgpeiX3ayIFHqpe2NqMWRvMwpOFcYg';
@@ -70,6 +64,12 @@
     } else {
       document.getElementById('detalle-libro').innerHTML = '<p>ID de libro no especificado.</p>';
     }
+
+    fetch("footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer-container").innerHTML = html;
+    });
 
   </script>
 
