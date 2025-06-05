@@ -239,6 +239,7 @@
     auth.onAuthStateChanged(user => {
       if (user) {
         nombreUsuario.textContent = `Hola, ${user.email}`;
+        console.log(user);
         btnLogin.style.display = 'none';
         btnLogout.style.display = 'inline-block';
       } else {
