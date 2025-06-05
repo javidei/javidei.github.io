@@ -48,9 +48,14 @@
   <!-- FOOTER -->
 <!--   <div id="footer-container"></div>
  -->
-  <footer>
-    <div>© 2025 - Javier Díaz - API googleapis - v0.0.29 (beta)</div>
-  </footer>
+ <footer>
+  <div>© 2025 - Javier Díaz - API googleapis - v0.0.30 (beta)</div>
+  <div>
+    <a href="https://www.youtube.com/watch?v=wW9TwZdWpjw" target="_blank" title="Visita mi canal de YouTube">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube" style="height: 24px;">
+    </a>
+  </div>
+</footer>
  
 
   <!-- VENTANA MODAL DE REGISTRO BONITA -->
@@ -151,13 +156,13 @@
               window.open(youtubeSearchUrl, '_blank');
             });*/
 
-            /*img.addEventListener('click', () => {
+            img.addEventListener('click', () => {
               window.location.href = `detallelibro.html?id=${item.id}`;
             });
             
             titulo.addEventListener('click', () => {
               window.location.href = `detallelibro.html?id=${item.id}`;
-            });*/
+            });
   
             galeria.appendChild(contenedor);
           });
@@ -239,7 +244,6 @@
     auth.onAuthStateChanged(user => {
       if (user) {
         nombreUsuario.textContent = `Hola, ${user.email}`;
-        console.log(user);
         btnLogin.style.display = 'none';
         btnLogout.style.display = 'inline-block';
       } else {
@@ -249,11 +253,6 @@
       }
     });
 
-    /*fetch("footer.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("footer-container").innerHTML = html;
-    });*/
 
   </script>
 
