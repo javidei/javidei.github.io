@@ -54,6 +54,12 @@
     } else {
       document.getElementById('detalle-libro').innerHTML = '<p>ID de libro no especificado.</p>';
     }
+
+    fetch("footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer-container").innerHTML = html;
+    });
   </script>
 
 </body>
