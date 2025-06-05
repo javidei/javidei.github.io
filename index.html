@@ -146,9 +146,17 @@
             contenedor.appendChild(autor);
             contenedor.appendChild(titulo);
             
-            img.addEventListener('click', () => {
+            /*img.addEventListener('click', () => {
               const youtubeSearchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(libro.title + ' book review')}`;
               window.open(youtubeSearchUrl, '_blank');
+            });*/
+
+            img.addEventListener('click', () => {
+              window.location.href = `detallelibro.html?id=${item.id}`;
+            });
+            
+            titulo.addEventListener('click', () => {
+              window.location.href = `detallelibro.html?id=${item.id}`;
             });
   
             galeria.appendChild(contenedor);
