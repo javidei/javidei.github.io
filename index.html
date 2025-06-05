@@ -223,16 +223,29 @@
       }
     });
 
-    fetch("footer.html")
-    .then(res => res.text())
-    .then(html => {
-      document.getElementById("footer-container").innerHTML = html;
-    });
-
     fetch("header.html")
     .then(res => res.text())
     .then(html => {
       document.getElementById("header-container").innerHTML = html;
+
+      // 🔽 Aquí ya existe el form, ahora sí puedes hacer esto:
+      const form = document.getElementById('form-busqueda');
+      if (form) {
+        form.addEventListener('submit', e => {
+          e.preventDefault();
+          const query = document.getElementById('input-busqueda').value.trim();
+          if (query) {
+            paginaActual = 0;
+            buscarLibros(query, 0);
+          }
+        });
+      }
+    });
+
+    fetch("footer.html")
+    .then(res => res.text())
+    .then(html => {
+      document.getElementById("footer-container").innerHTML = html;
     });
     
   </script>
