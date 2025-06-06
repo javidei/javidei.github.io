@@ -192,9 +192,10 @@ a:hover h2 {
 
 .paginacion-top {
   display: flex;
-  justify-content: space-between;
+  justify-content: center; /* Centra horizontalmente */
   align-items: center;
   margin: 1rem 2rem 0.5rem 2rem;
+  gap: 1rem; /* Opcional: añade espacio entre botones */
 }
 
 .galeria-libros {
