@@ -26,7 +26,6 @@
     <form id="form-busqueda" style="margin-top: 1rem;">
       <input type="text" id="input-busqueda" class="campo-busqueda" placeholder="Buscar libros..." />
       <button type="submit" class="btn-buscar">Buscar</button>
-      <button type="button" id="idPgDetalle" class="btn-detalles">Películas</button>
     </form>
    
 
@@ -34,6 +33,14 @@
       <span id="nombre-usuario"></span>
       <button id="btn-login" class="btn btn-sm btn-outline-dark">Iniciar sesión</button>
       <button id="btn-logout" class="btn btn-sm btn-outline-danger" style="display:none;">Salir</button>
+    </div>
+
+    <div id="pestanas-header" style="position: absolute; bottom: 0.5rem; left: 1rem; display: flex; gap: 0.5rem; z-index: 1000;">
+      <button type="button" id="idPgDetalle" class="btn btn-sm" style="background-color: #ffc107; color: #000;">Películas</button>
+      <button class="btn btn-sm" style="background-color: #0d6efd; color: #fff;">Pestaña 1</button>
+      <button class="btn btn-sm" style="background-color: #dc3545; color: #fff;">Pestaña 2</button>
+      <button class="btn btn-sm" style="background-color: #198754; color: #fff;">Pestaña 3</button>
+      <button class="btn btn-sm" style="background-color: #6f42c1; color: #fff;">Pestaña 4</button>
     </div>
 
   </header>
