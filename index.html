@@ -13,16 +13,11 @@
   <!-- HEADER -->
   <header>
 
-    <!-- Firebase App + Auth -->
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-
     <a href="https://javidei.github.io/" style="text-decoration: none;">
       <h2 class="favicon-header">
         <img src="logoStilton.png" alt="Logo" class="favicon-img" /> Librería Stilton
       </h2>
     </a>
-    <p>Descubre libros, ideas y cosas que me inspiran cada día</p>
     <form id="form-busqueda" style="margin-top: 1rem;">
       <input type="text" id="input-busqueda" class="campo-busqueda" placeholder="Buscar libros..." />
       <button type="submit" class="btn-buscar">Buscar</button>
@@ -37,11 +32,9 @@
 
     <!-- PESTAÑAS DE NAVEGACIÓN BAJO EL HEADER -->
     <div id="pestanas-header" style="position: absolute; bottom: 0.5rem; left: 1rem; display: flex; gap: 0.5rem; z-index: 1000;">
-      <button type="button" id="idPgDetalle" class="btn btn-sm" style="background-color: #ffc107; color: #000;">Películas</button>
-      <button class="btn btn-sm" style="background-color: #0d6efd; color: #fff;">Pestaña 1</button>
-      <button class="btn btn-sm" style="background-color: #dc3545; color: #fff;">Pestaña 2</button>
-      <button class="btn btn-sm" style="background-color: #198754; color: #fff;">Pestaña 3</button>
-      <button class="btn btn-sm" style="background-color: #6f42c1; color: #fff;">Pestaña 4</button>
+      <button class="btn btn-sm" style="background-color: #0d6efd; color: #fff;">Rick y Morty</button>
+      <button class="btn btn-sm" style="background-color: #dc3545; color: #fff;">Harry Potter</button>
+      <button type="button" id="idPgDetalle" class="btn btn-sm" style="background-color: #ffc107; color: #000;">Detalle</button>
     </div>
 
 
@@ -50,10 +43,13 @@
 
   <main>
     <!-- Controles de paginación arriba -->
-    <div class="paginacion-top">
-      <button id="btnAnterior" class="btn btn-secondary">← Anterior</button>
-      <button id="btnSiguiente" class="btn btn-secondary">Siguiente →</button>
-    </div>
+     <section id="idBotonesPg" style="display:none;">
+      <div class="paginacion-top">
+        <button id="btnAnterior" class="btn btn-secondary" >← Anterior</button>
+        <button id="btnSiguiente" class="btn btn-secondary">Siguiente →</button>
+      </div>
+    </section>
+    
   
     <!-- Sección de contenido de libros -->
     <div class="galeria-libros">
@@ -91,8 +87,21 @@
   </div>
 
 
+  <!-- Importación de Firebase App + Auth -->
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
   
   <script>
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCOHxEj9Owzx8XXLnvlKfsQcCAveSfX_5k",
+      authDomain: "libreriastilton.firebaseapp.com",
+      projectId: "libreriastilton",
+      appId: "1:364473284806:web:411cbfcb4cee9dd532bfc7"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+
     const API_KEY = 'AIzaSyB1ljgpeiX3ayIFHqpe2NqMWRvMwpOFcYg';
     let paginaActual = 0;
     const resultadosPorPagina = 40;
@@ -120,15 +129,18 @@
         .then(data => {
           const galeria = document.getElementById('galeria');
           galeria.innerHTML = '';
-  
+
           totalItems = data.totalItems || 0;
           actualizarBotones();
-  
+
           if (!data.items || data.items.length === 0) {
             galeria.innerHTML = '<p style="text-align:center; width:100%;">No se encontraron resultados.</p>';
+            document.getElementById('idBotonesPg').style.display = 'none'; // ocultar si no hay nada
             return;
           }
-  
+
+          let imagenes = [];
+          
           data.items.forEach(item => {
             const libro = item.volumeInfo;
             const contenedor = document.createElement('div');
@@ -137,11 +149,13 @@
             contenedor.style.alignItems = 'center';
             contenedor.style.cursor = 'pointer';
             contenedor.title = 'Ir a video de youtube relacionado';
-  
+
             const img = document.createElement('img');
             img.src = libro.imageLinks?.thumbnail || 'https://placehold.co/128x192/png?text=Sin+portada';
             img.alt = libro.title;
-  
+
+            imagenes.push(img);  // Guardamos la imagen para detectar carga
+
             const titulo = document.createElement('p');
             titulo.textContent = libro.title;
             titulo.style.marginTop = '0.5rem';
@@ -150,33 +164,43 @@
 
             const autor = document.createElement('p');
             autor.textContent = libro.authors ? `Autor: ${libro.authors.join(', ')}` : 'Autor desconocido';
-            autor.style.all = 'unset'; // 🔥 Borra todos los estilos heredados
-            autor.style.fontSize = '0.75rem'; // Opcional, para que se vea un poco más pequeño
-  
+            autor.style.all = 'unset';
+            autor.style.fontSize = '0.75rem';
+
             contenedor.appendChild(img);
             contenedor.appendChild(autor);
             contenedor.appendChild(titulo);
-            
-            /*img.addEventListener('click', () => {
-              const youtubeSearchUrl = `https://www.youtube.com/results?search_query=${encodeURIComponent(libro.title + ' book review')}`;
-              window.open(youtubeSearchUrl, '_blank');
-            });*/
 
             img.addEventListener('click', () => {
               window.location.href = `detallelibro.html?id=${item.id}`;
             });
-            
+
             titulo.addEventListener('click', () => {
               window.location.href = `detallelibro.html?id=${item.id}`;
             });
-  
+
             galeria.appendChild(contenedor);
           });
+
+          // Aquí esperamos a que todas las imágenes terminen de cargar:
+          Promise.all(imagenes.map(img => new Promise((resolve) => {
+            if (img.complete) {
+              resolve();
+            } else {
+              img.onload = () => resolve();
+              img.onerror = () => resolve();  // En caso de error también resolvemos para no quedarnos colgados
+            }
+          }))).then(() => {
+            // Cuando todas las imágenes cargaron, mostramos la sección
+            document.getElementById('idBotonesPg').style.display = 'block';
+          });
+
         })
         .catch(err => {
           console.error('Error al cargar libros:', err);
+          document.getElementById('idBotonesPg').style.display = 'none'; // Ocultamos si error
         });
-    }
+      }
   
     document.getElementById('form-busqueda').addEventListener('submit', e => {
       e.preventDefault();
@@ -212,14 +236,9 @@
       window.location.href = 'detalle.html';
     });
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCOHxEj9Owzx8XXLnvlKfsQcCAveSfX_5k",
-      authDomain: "libreriastilton.firebaseapp.com",
-      projectId: "libreriastilton",
-      appId: "1:364473284806:web:411cbfcb4cee9dd532bfc7"
-    };
-    firebase.initializeApp(firebaseConfig);
-    const auth = firebase.auth();
+    document.getElementById('idPgReadme').addEventListener('click', () => {
+      window.location.href = 'README.md';
+    });
 
     const modal = document.getElementById('modal-auth');
     const btnLogin = document.getElementById('btn-login');
@@ -259,11 +278,24 @@
       }
     });
 
+    // Cierre de ventana modal al hacer click fuera de ella
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.style.display = 'none';
+      }
+    });
+
+    window.onload = function() {
+      document.getElementById('idBotonesPg').style.display = 'block';
+    };
+
     fetch("footer.html")
     .then(res => res.text())
     .then(html => {
       document.getElementById("footer-container").innerHTML = html;
     });
+
+
     
   </script>
 

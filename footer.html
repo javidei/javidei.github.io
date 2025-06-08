@@ -1,8 +1,69 @@
 <footer>
-    <div>© 2025 - Javier Díaz - v0.0.35 (beta)</div>
-    <div>
-        <a href="https://www.youtube.com/watch?v=wW9TwZdWpjw" target="_blank" title="Visita mi canal de YouTube">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube" style="height: 24px;">
-        </a>
+    
+
+    <div class="footer-container">
+        <div class="left">© 2025 - Javier Díaz - v0.0.36
+        </div>
+        <div class="right">
+            <a href="readme.MD" target="_blank" title="Detalles del proyecto" class="btn-readme">README</a>
+            <a href="https://www.youtube.com/watch?v=wW9TwZdWpjw" target="_blank" title="Intro de BLEACH ¡por que sí!">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png" alt="YouTube" style="height: 30px;">
+            </a>
+        </div>
     </div>
+
+    <style>
+        .footer-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .left {
+            flex: 1 1 auto;
+            text-align: left;
+        }
+
+        .right {
+            display: flex;
+            gap: 15px;
+            flex: 0 1 auto;
+            justify-content: flex-end;
+        }
+        .btn-readme {
+            background-color: #007bff;
+            border: none;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 14px;
+            font-family: sans-serif;
+            transition: background-color 0.3s ease;
+        }
+        .btn-readme:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsivo para móviles */
+        @media (max-width: 480px) {
+            .footer-container {
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            }
+            .left, .right {
+            flex: none;
+            width: 100%;
+            justify-content: center;
+            }
+            .right {
+            margin-top: 8px;
+            }
+        }
+    </style>
+
 </footer>
+
