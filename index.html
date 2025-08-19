@@ -127,69 +127,69 @@
       fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&startIndex=${startIndex}&maxResults=${resultadosPorPagina}&key=${API_KEY}`)
         .then(response => response.json())
         .then(data => {
-  const galeria = document.getElementById('galeria');
-  galeria.innerHTML = '';
-
-  totalItems = data.totalItems || 0;
-  actualizarBotones();
-
-  if (!data.items || data.items.length === 0) {
-    galeria.innerHTML = '<p style="text-align:center; width:100%;">No se encontraron resultados.</p>';
-    document.getElementById('idBotonesPg').style.display = 'none';
-    return;
-  }
-
-  // 🔹 FILTRAR EXACTO
-  const query = document.getElementById('input-busqueda').value.trim();
-  const itemsFiltrados = data.items.filter(item => item.volumeInfo.title === query);
-
-  if (itemsFiltrados.length === 0) {
-    galeria.innerHTML = '<p style="text-align:center; width:100%;">No se encontraron coincidencias exactas.</p>';
-    document.getElementById('idBotonesPg').style.display = 'none';
-    return;
-  }
-
-  let imagenes = [];
-  
-  itemsFiltrados.forEach(item => {
-    const libro = item.volumeInfo;
-    const contenedor = document.createElement('div');
-    contenedor.style.display = 'flex';
-    contenedor.style.flexDirection = 'column';
-    contenedor.style.alignItems = 'center';
-    contenedor.style.cursor = 'pointer';
-    contenedor.title = 'Ir a video de youtube relacionado';
-
-    const img = document.createElement('img');
-    img.src = libro.imageLinks?.thumbnail || 'https://placehold.co/128x192/png?text=Sin+portada';
-    img.alt = libro.title;
-    imagenes.push(img);
-
-    const titulo = document.createElement('p');
-    titulo.textContent = libro.title;
-    titulo.style.marginTop = '0.5rem';
-    titulo.style.fontWeight = 'bold';
-    titulo.style.textAlign = 'center';
-
-    const autor = document.createElement('p');
-    autor.textContent = libro.authors ? `Autor: ${libro.authors.join(', ')}` : 'Autor desconocido';
-    autor.style.all = 'unset';
-    autor.style.fontSize = '0.75rem';
-
-    contenedor.appendChild(img);
-    contenedor.appendChild(autor);
-    contenedor.appendChild(titulo);
-
-    img.addEventListener('click', () => {
-      window.location.href = `detallelibro.html?id=${item.id}`;
-    });
-
-    titulo.addEventListener('click', () => {
-      window.location.href = `detallelibro.html?id=${item.id}`;
-    });
-
-    galeria.appendChild(contenedor);
-  });
+          const galeria = document.getElementById('galeria');
+          galeria.innerHTML = '';
+        
+          totalItems = data.totalItems || 0;
+          actualizarBotones();
+        
+          if (!data.items || data.items.length === 0) {
+            galeria.innerHTML = '<p style="text-align:center; width:100%;">No se encontraron resultados.</p>';
+            document.getElementById('idBotonesPg').style.display = 'none';
+            return;
+          }
+        
+          // 🔹 FILTRAR EXACTO
+          const query = document.getElementById('input-busqueda').value.trim();
+          const itemsFiltrados = data.items.filter(item => item.volumeInfo.title === query);
+        
+          if (itemsFiltrados.length === 0) {
+            galeria.innerHTML = '<p style="text-align:center; width:100%;">No se encontraron coincidencias exactas.</p>';
+            document.getElementById('idBotonesPg').style.display = 'none';
+            return;
+          }
+        
+          let imagenes = [];
+          
+          itemsFiltrados.forEach(item => {
+            const libro = item.volumeInfo;
+            const contenedor = document.createElement('div');
+            contenedor.style.display = 'flex';
+            contenedor.style.flexDirection = 'column';
+            contenedor.style.alignItems = 'center';
+            contenedor.style.cursor = 'pointer';
+            contenedor.title = 'Ir a video de youtube relacionado';
+        
+            const img = document.createElement('img');
+            img.src = libro.imageLinks?.thumbnail || 'https://placehold.co/128x192/png?text=Sin+portada';
+            img.alt = libro.title;
+            imagenes.push(img);
+        
+            const titulo = document.createElement('p');
+            titulo.textContent = libro.title;
+            titulo.style.marginTop = '0.5rem';
+            titulo.style.fontWeight = 'bold';
+            titulo.style.textAlign = 'center';
+        
+            const autor = document.createElement('p');
+            autor.textContent = libro.authors ? `Autor: ${libro.authors.join(', ')}` : 'Autor desconocido';
+            autor.style.all = 'unset';
+            autor.style.fontSize = '0.75rem';
+        
+            contenedor.appendChild(img);
+            contenedor.appendChild(autor);
+            contenedor.appendChild(titulo);
+        
+            img.addEventListener('click', () => {
+              window.location.href = `detallelibro.html?id=${item.id}`;
+            });
+        
+            titulo.addEventListener('click', () => {
+              window.location.href = `detallelibro.html?id=${item.id}`;
+            });
+        
+            galeria.appendChild(contenedor);
+          });
 
 
           // Aquí esperamos a que todas las imágenes terminen de cargar:
@@ -311,4 +311,5 @@
 
 </body>
 </html>
+
 
